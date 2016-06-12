@@ -15,16 +15,16 @@ Location of files on server side is in server's current directory (directory whe
 ##Protocol description
 Protocol message consists of attributes divided by newline character. At the end of a message is sequence of two newline characters.
 
-**Request**
+**Request**  
 First attribute has to be type of operation to be executed.
 - 0 (request to upload file)
   - required attributes:
-    - File:<file name>
-    - Length:<length of file to be uploaded in bytes>
+    - File:(file name)
+    - Length:(length of file to be uploaded in bytes)
 
 - 1 (request to download file)
   - required attributes:
-    - File:<file name>
+    - File:(file name)
 
 **Server response**
 - 2 (request was successfully accepted / upload was successful)
@@ -35,14 +35,14 @@ First attribute has to be type of operation to be executed.
 - 7 (Missing required attribute)
 - 8 (Server is overloaded at the moment)
 
-**Request example for upload operation**
-0\n
-File:file.txt\n
-Length:42\n
+**Request example for upload operation**  
+0\n  
+File:file.txt\n  
+Length:42\n  
 
-**Request example for download operation**
-1\n
-File:file.txt\n
+**Request example for download operation**  
+1\n  
+File:file.txt\n  
 
 
 ##Run the server
