@@ -1,28 +1,32 @@
-#Client/Server
+# Client/Server
 
 
-##About
-Applications were implemented in C++ using sockets API as a school project. Applications were developed and tested for FreeBSD server.
+## About
+The applications were implemented in C++ using sockets API as a school project.
+The applications were developed and tested on FreeBSD server.
 
-Location of files on server side is in server's current directory (directory where is server running from ). Downloaded file is saved into client's current directory. 
+The location of files on the server side is in the server's current directory
+(directory where the server is running from ). Downloaded files are saved into
+client's current directory.
 
 
 **Limitations of the server**
-- max length of request is 4096 bytes
+- max length of a request is 4096 bytes
 - can handle max 5 clients simultaneously
 
 
-##Protocol description
-Protocol message consists of attributes divided by newline character. At the end of a message is sequence of two newline characters.
+## Protocol description
+The protocol message consists of attributes divided by the newline character.
+A sequence of two newline characters is at the end of a message.
 
-**Request**  
-First attribute has to be type of operation to be executed.
+**Request**
+The first attribute has to be a type of the operation to be executed.
 - 0 (request to upload file)
   - required attributes:
     - File:(file name)
-    - Length:(length of file to be uploaded in bytes)
+    - Length:(length of the file to be uploaded in bytes)
 
-- 1 (request to download file)
+- 1 (request to download a file)
   - required attributes:
     - File:(file name)
 
@@ -35,24 +39,24 @@ First attribute has to be type of operation to be executed.
 - 7 (Missing required attribute)
 - 8 (Server is overloaded at the moment)
 
-**Request example for upload operation**  
-0\n  
-File:file.txt\n  
-Length:42\n  
+**Request example for upload operation**
+0\n
+File:file.txt\n
+Length:42\n
 
-**Request example for download operation**  
-1\n  
-File:file.txt\n  
+**Request example for download operation**
+1\n
+File:file.txt\n
 
 
-##Run the server
+## Run the server
 ```
 make server
 ./server -p <port number, where server will expect a connection>
 ```
 
 
-##Run the client
+## Run the client
 ```
 make client
 ./client -p <port number, where client will create a connection> -h <server host name / IP address>
